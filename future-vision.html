@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Vision & Impact | Sam Altman</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://source.unsplash.com/random/1600x900/?future,technology') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .vision-container {
+            padding: 3rem 0;
+        }
+        
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .vision-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .vision-card-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .vision-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .vision-card p {
+            font-size: 1rem;
+        }
+        
+        .impact-section {
+            background-color: var(--light-color);
+            padding: 3rem 0;
+        }
+        
+        .impact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .impact-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .impact-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .impact-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 0.5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .vision-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Sam Altman</a>
+                <button class="mobile-menu-btn">☰</button>
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="early-life.html">Early Life</a></li>
+                        <li><a href="y-combinator.html">Y Combinator</a></li>
+                        <li><a href="openai.html">OpenAI</a></li>
+                        <li><a href="achievements.html">Achievements</a></li>
+                        <li><a href="controversies.html">Controversies</a></li>
+                        <li><a href="future-vision.html" class="active">Future Vision</a></li>
+                        <li><a href="quotes.html">Quotes</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Future Vision & Impact</h1>
+            <p>Exploring Sam Altman's ambitious plans for the future of AI and its transformative potential.</p>
+        </div>
+    </section>
+
+    <section class="vision-container">
+        <div class="container">
+            <div class="vision-grid">
+                <div class="vision-card">
+                    <div class="vision-card-icon">⚛</div>
+                    <h3>Artificial General Intelligence (AGI)</h3>
+                    <p>Sam Altman's primary focus is on the development of AGI, a form of AI that can perform any intellectual task a human can. He believes AGI has the potential to solve some of the world's most pressing problems, from climate change to disease.</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-card-icon">🔬</div>
+                    <h3>Accelerating Scientific Discovery</h3>
+                    <p>Altman envisions AI as a tool to dramatically accelerate scientific progress. He has predicted that AI systems could compress a decade of scientific advancement into a single year, leading to unprecedented breakthroughs.</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-card-icon">🌐</div>
+                    <h3>Worldcoin & Digital Identity</h3>
+                    <p>Beyond OpenAI, Altman co-founded Worldcoin, a project aimed at creating a global "proof-of-humanity" network. This ambitious initiative seeks to provide a decentralized digital identity for every person on the planet, potentially enabling new forms of global economic participation.</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-card-icon">📱</div>
+                    <h3>AI-Integrated Hardware</h3>
+                    <p>In collaboration with former Apple designer Jony Ive, Altman is working on new hardware that seamlessly integrates AI into everyday life. This project aims to create a more natural and intuitive way for humans to interact with artificial intelligence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="impact-section">
+        <div class="container">
+            <div class="impact-content">
+                <div class="impact-text">
+                    <h2>Ongoing Influence and Societal Impact</h2>
+                    <p>Sam Altman's work continues to shape the global conversation around artificial intelligence. He is a vocal advocate for proactive regulation and ethical guidelines to ensure that AI is developed and deployed safely and for the benefit of all humanity.</p>
+                    <p>His engagement with policymakers, industry leaders, and the public is aimed at fostering a collaborative approach to navigating the opportunities and challenges of the AI revolution. Altman's influence extends beyond technology, touching on economics, ethics, and the future of work.</p>
+                </div>
+                <div class="impact-image">
+                    <img src="https://static01.nyt.com/images/2024/12/04/multimedia/04dealbook-summit-sam-altman-pkwg/04dealbook-summit-sam-altman-pkwg-superJumbo.jpg" alt="Sam Altman discussing the future of AI">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sam Altman Website. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
