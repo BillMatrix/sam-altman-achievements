@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources & Further Reading | Sam Altman</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 24px;
+        }
+        
+        .hero {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .resources-section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: var(--secondary-color);
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .resource-card-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+        }
+        
+        .resource-card-body {
+            padding: 20px;
+            flex-grow: 1;
+        }
+        
+        .resource-card h3 {
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .resource-link {
+            display: block;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: var(--transition);
+            padding: 8px;
+            border-radius: 4px;
+        }
+        
+        .resource-link:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--accent-color);
+        }
+        
+        .resource-link i {
+            margin-right: 8px;
+        }
+        
+        .search-container {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .search-box {
+            display: flex;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .search-input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .search-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .search-button:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-button {
+            background-color: white;
+            border: 2px solid #ddd;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-button:hover, .filter-button.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links li {
+            margin: 0 15px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .copyright {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            .nav-links.show {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Sam Altman</a>
+                <button class="hamburger" id="hamburger">☰</button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="early-life.html">Early Life</a></li>
+                    <li><a href="y-combinator.html">Y Combinator</a></li>
+                    <li><a href="openai.html">OpenAI</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="controversies.html">Controversies</a></li>
+                    <li><a href="future-vision.html">Future Vision</a></li>
+                    <li><a href="quotes.html">Quotes</a></li>
+                    <li><a href="resources.html" class="active">Resources</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Resources & Further Reading</h1>
+            <p>Explore a curated collection of articles, interviews, and resources about Sam Altman and his work.</p>
+        </div>
+    </section>
+
+    <section class="resources-section">
+        <div class="container">
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search resources...">
+                    <button class="search-button" id="searchButton">Search</button>
+                </div>
+            </div>
+
+            <div class="filter-container">
+                <button class="filter-button active" data-filter="all">All</button>
+                <button class="filter-button" data-filter="openai">OpenAI</button>
+                <button class="filter-button" data-filter="y-combinator">Y Combinator</button>
+                <button class="filter-button" data-filter="interviews">Interviews</button>
+                <button class="filter-button" data-filter="articles">Articles</button>
+            </div>
+
+            <div class="resources-grid" id="resourcesGrid">
+                <!-- OpenAI Category -->
+                <div class="resource-card" data-category="openai">
+                    <div class="resource-card-header">
+                        <h3>OpenAI Resources</h3>
+                    </div>
+                    <div class="resource-card-body">
+                        <a href="https://openai.com/about" class="resource-link" target="_blank">
+                            <i>🔗</i> OpenAI - About
+                        </a>
+                        <a href="https://openai.com/blog/planning-for-agi-and-beyond" class="resource-link" target="_blank">
+                            <i>🔗</i> Planning for AGI and Beyond
+                        </a>
+                        <a href="https://openai.com/blog/openai-announces-leadership-transition" class="resource-link" target="_blank">
+                            <i>🔗</i> OpenAI Announces Leadership Transition
+                        </a>
+                        <a href="https://www.nytimes.com/2023/11/17/technology/openai-sam-altman-fired.html" class="resource-link" target="_blank">
+                            <i>🔗</i> Sam Altman Fired as CEO of OpenAI
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Y Combinator Category -->
+                <div class="resource-card" data-category="y-combinator">
+                    <div class="resource-card-header">
+                        <h3>Y Combinator Resources</h3>
+                    </div>
+                    <div class="resource-card-body">
+                        <a href="https://www.ycombinator.com/about" class="resource-link" target="_blank">
+                            <i>🔗</i> Y Combinator - About
+                        </a>
+                        <a href="https://blog.ycombinator.com/sam-altman-named-y-combinator-president/" class="resource-link" target="_blank">
+                            <i>🔗</i> Sam Altman Named Y Combinator President
+                        </a>
+                        <a href="https://blog.ycombinator.com/yc-continuity/" class="resource-link" target="_blank">
+                            <i>🔗</i> YC Continuity
+                        </a>
+                        <a href="https://www.ycombinator.com/blog/sam-altman-stepping-down-as-president/" class="resource-link" target="_blank">
+                            <i>🔗</i> Sam Altman Stepping Down as President
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interviews Category -->
+                <div class="resource-card" data-category="interviews">
+                    <div class="resource-card-header">
+                        <h3>Interviews & Talks</h3>
+                    </div>
+                    <div class="resource-card-body">
+                        <a href="https://www.youtube.com/watch?v=L_Guz73e6fw" class="resource-link" target="_blank">
+                            <i>🔗</i> Sam Altman: OpenAI CEO on GPT-4, ChatGPT, and the Future of AI
+                        </a>
+                        <a href="https://www.ted.com/talks/sam_altman_the_awe_inspiring_journey_of_chatgpt" class="resource-link" target="_blank">
+                            <i>🔗</i> TED Talk: The awe-inspiring journey of ChatGPT
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=WHoWGNQRXb0" class="resource-link" target="_blank">
+                            <i>🔗</i> Sam Altman on Choosing Projects, Creating Value, and Finding Purpose
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Articles Category -->
+                <div class="resource-card" data-category="articles">
+                    <div class="resource-card-header">
+                        <h3>Articles & Publications</h3>
+                    </div>
+                    <div class="resource-card-body">
+                        <a href="https://blog.samaltman.com/" class="resource-link" target="_blank">
+                            <i>🔗</i> Sam Altman's Blog
+                        </a>
+                        <a href="https://www.newyorker.com/magazine/2016/10/10/sam-altmans-manifest-destiny" class="resource-link" target="_blank">
+                            <i>🔗</i> The New Yorker: Sam Altman's Manifest Destiny
+                        </a>
+                        <a href="https://www.forbes.com/profile/sam-altman/" class="resource-link" target="_blank">
+                            <i>🔗</i> Forbes Profile: Sam Altman
+                        </a>
+                        <a href="https://www.wired.com/story/plaintext-sam-altman-openai-chatgpt-gpt4/" class="resource-link" target="_blank">
+                            <i>🔗</i> Wired: Sam Altman on the Splendors and Miseries of ChatGPT
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Additional Resources -->
+                <div class="resource-card" data-category="articles">
+                    <div class="resource-card-header">
+                        <h3>Additional Resources</h3>
+                    </div>
+                    <div class="resource-card-body">
+                        <a href="https://www.cnbc.com/2023/11/20/sam-altman-to-return-as-ceo-of-openai.html" class="resource-link" target="_blank">
+                            <i>🔗</i> Sam Altman to Return as CEO of OpenAI
+                        </a>
+                        <a href="https://www.theverge.com/23610427/chatgpt-openai-sam-altman-greg-brockman-interview" class="resource-link" target="_blank">
+                            <i>🔗</i> The Verge: Inside OpenAI
+                        </a>
+                        <a href="https://www.technologyreview.com/2023/07/25/1076389/sam-altman-profile-openai-chatgpt-agi/" class="resource-link" target="_blank">
+                            <i>🔗</i> MIT Technology Review: The Gambler Who Beat the House
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+                <p class="copyright">© 2023 Sam Altman Website. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('show');
+        });
+
+        // Search Functionality
+        document.getElementById('searchButton').addEventListener('click', searchResources);
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchResources();
+            }
+        });
+
+        function searchResources() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const resourceLinks = document.querySelectorAll('.resource-link');
+            
+            resourceLinks.forEach(link => {
+                const text = link.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    link.style.display = 'block';
+                    link.closest('.resource-card').style.display = 'flex';
+                } else {
+                    link.style.display = 'none';
+                }
+            });
+            
+            // Hide cards with no visible links
+            document.querySelectorAll('.resource-card').forEach(card => {
+                const visibleLinks = Array.from(card.querySelectorAll('.resource-link')).filter(link => 
+                    link.style.display !== 'none'
+                );
+                
+                if (visibleLinks.length === 0) {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Filter Functionality
+        const filterButtons = document.querySelectorAll('.filter-button');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                const cards = document.querySelectorAll('.resource-card');
+                
+                cards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
