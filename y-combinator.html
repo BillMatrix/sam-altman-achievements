@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam Altman - Y Combinator Era</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .active {
+            color: var(--primary-color);
+        }
+        
+        .active::after {
+            width: 100%;
+            background-color: var(--primary-color);
+        }
+        
+        .hero {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .main-content {
+            padding: 3rem 0;
+        }
+        
+        .two-column {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .image-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .content-section {
+            margin-bottom: 2rem;
+        }
+        
+        .content-section h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .content-section p {
+            margin-bottom: 1rem;
+        }
+        
+        .stats-container {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stats-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .stat-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--light-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -10px;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .companies-section {
+            margin: 3rem 0;
+        }
+        
+        .companies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .company-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .company-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            background-color: var(--light-color);
+        }
+        
+        .company-name {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-nav {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .footer-nav ul li {
+            margin: 0 1rem;
+        }
+        
+        .footer-nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--dark-color);
+                height: 0;
+                overflow: hidden;
+                transition: var(--transition);
+            }
+            
+            nav.active {
+                height: auto;
+                padding: 1rem 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .two-column {
+                flex-direction: column-reverse;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Sam Altman</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="early-life.html">Early Life</a></li>
+                    <li><a href="y-combinator.html" class="active">Y Combinator Era</a></li>
+                    <li><a href="openai.html">OpenAI Leadership</a></li>
+                    <li><a href="achievements.html">Key Achievements</a></li>
+                    <li><a href="controversies.html">Controversies</a></li>
+                    <li><a href="future-vision.html">Future Vision</a></li>
+                    <li><a href="quotes.html">Quotes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Y Combinator Era</h1>
+            <p>Sam Altman's transformative leadership at the world's premier startup accelerator</p>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="two-column">
+                <div class="column">
+                    <div class="content-section">
+                        <h2>Presidency at Y Combinator</h2>
+                        <p>Sam Altman served as the president of Y Combinator (YC) from 2014 to 2019, taking over from co-founder Paul Graham. During his five-year tenure, Altman transformed YC from an already successful startup accelerator into the undisputed global leader in early-stage startup funding and development.</p>
+                        <p>Under his leadership, Y Combinator evolved from a small, twice-yearly program into a comprehensive ecosystem for nurturing startups at various stages of growth. His vision extended beyond Silicon Valley, as he actively worked to make the program more accessible to founders from diverse backgrounds and regions.</p>
+                    </div>
+
+                    <div class="content-section">
+                        <h2>Expanding YC's Reach and Scale</h2>
+                        <p>One of Altman's most significant contributions was broadening Y Combinator's reach by accepting a more diverse range of startups, including those outside traditional tech sectors. He increased YC's scale by supporting more startups per batch and extending its influence globally.</p>
+                        <p>Altman had an ambitious vision for Y Combinator's growth, aiming to expand the fund to accommodate 1,000 new companies per year. This represented a dramatic scaling of operations compared to when he took over the organization.</p>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="image-container">
+                        <img src="https://media.wired.com/photos/59322e8544db296121d698e1/3:2/w_2560%2Cc_limit/SamAltman1.jpg" alt="Sam Altman at Y Combinator">
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <h3 class="stats-title">Y Combinator Under Altman's Leadership</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">1,900+</div>
+                        <div class="stat-label">Companies Funded</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Years as President</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">$100B+</div>
+                        <div class="stat-label">Combined Valuation</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">40+</div>
+                        <div class="stat-label">Countries Represented</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Strategic Innovations</h2>
+                <p>Altman introduced several new programs that expanded YC's impact, most notably YC Continuity, a growth-stage fund that allows Y Combinator to continue supporting startups as they scale beyond their initial funding rounds. This strategic move enabled YC to maintain relationships with promising companies throughout their growth journey.</p>
+                <p>He also implemented changes that made the program more accessible to startups from different regions and industries, helping to diversify YC's portfolio and extend its global influence. Under his guidance, Y Combinator opened up to more hardware startups, biotech companies, and non-profit organizations.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2014</div>
+                        <h3>Appointed President</h3>
+                        <p>Sam Altman takes over as Y Combinator president from Paul Graham.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2015</div>
+                        <h3>YC Continuity Fund</h3>
+                        <p>Launches $700M growth-stage fund to continue supporting YC companies.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2016</div>
+                        <h3>YC Research</h3>
+                        <p>Establishes YC Research as a non-profit research lab.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2018</div>
+                        <h3>Expanded Batch Size</h3>
+                        <p>YC batch sizes grow to over 200 companies per cohort.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2019</div>
+                        <h3>Transition to Chairman</h3>
+                        <p>Steps down as president to focus on OpenAI, becomes YC chairman.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="companies-section">
+                <h2>Notable Companies During Altman's Tenure</h2>
+                <p>During his time at Y Combinator, the accelerator helped about 1,900 companies, including some of the most successful startups of the decade. Here are some notable companies that were part of YC during this period:</p>
+                <div class="companies-grid">
+                    <div class="company-card">
+                        <div class="company-name">Airbnb</div>
+                    </div>
+                    <div class="company-card">
+                        <div class="company-name">Dropbox</div>
+                    </div>
+                    <div class="company-card">
+                        <div class="company-name">Reddit</div>
+                    </div>
+                    <div class="company-card">
+                        <div class="company-name">Instacart</div>
+                    </div>
+                    <div class="company-card">
+                        <div class="company-name">DoorDash</div>
+                    </div>
+                    <div class="company-card">
+                        <div class="company-name">Twitch</div>
+                    </div>
+                    <div class="company-card">
+                        <div class="company-name">Stripe</div>
+                    </div>
+                    <div class="company-card">
+                        <div class="company-name">Coinbase</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Legacy at Y Combinator</h2>
+                <p>Altman's tenure is credited with solidifying YC's reputation as the premier startup accelerator in the world. His leadership saw a significant increase in the diversity of YC's portfolio, both in terms of the types of companies funded and the backgrounds of the founders.</p>
+                <p>By the time he stepped down in 2019 to focus on OpenAI, Altman had transformed Y Combinator from a Silicon Valley institution into a global powerhouse that had fundamentally changed how early-stage startups are funded and developed worldwide.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="early-life.html">Early Life</a></li>
+                    <li><a href="y-combinator.html">Y Combinator Era</a></li>
+                    <li><a href="openai.html">OpenAI Leadership</a></li>
+                    <li><a href="achievements.html">Key Achievements</a></li>
+                    <li><a href="controversies.html">Controversies</a></li>
+                    <li><a href="future-vision.html">Future Vision</a></li>
+                    <li><a href="quotes.html">Quotes</a></li>
+                </ul>
+            </nav>
+            <div class="copyright">
+                &copy; <span id="year"></span> Sam Altman Biography. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation toggle for mobile
+        const navToggle = document.getElementById('navToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        navToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+        
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Animate stats on scroll
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        const animateStats = () => {
+            statNumbers.forEach(stat => {
+                const value = stat.textContent;
+                stat.textContent = '0';
+                
+                let counter = 0;
+                const target = parseFloat(value.replace(/,|\+|\$|B/g, ''));
+                const suffix = value.match(/\+|\$|B/g) ? value.match(/\+|\$|B/g)[0] : '';
+                const prefix = value.includes('$') ? '$' : '';
+                const duration = 1500;
+                const increment = target / (duration / 16);
+                
+                const updateCounter = () => {
+                    counter += increment;
+                    if (counter < target) {
+                        stat.textContent = `${prefix}${Math.ceil(counter)}${suffix}`;
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        stat.textContent = value;
+                    }
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCounter();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(stat);
+            });
+        };
+        
+        // Run animation when page loads
+        window.addEventListener('load', animateStats);
+    </script>
+</body>
+</html>
